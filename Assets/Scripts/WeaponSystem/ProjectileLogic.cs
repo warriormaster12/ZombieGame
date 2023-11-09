@@ -8,11 +8,14 @@ public class ProjectileLogic : MonoBehaviour
     [SerializeField] private float m_speed = 20f;
     private float time = 0.0f;
 
+    private float damage = 0.0f;
+
     private Vector3 direction = Vector3.zero;
 
-    public void SetupProjectile(Vector3 dir, Vector3 spawn_position) {
+    public void SetupProjectile(Vector3 dir, Vector3 spawn_position, float damage) {
         direction = dir;
         transform.position = spawn_position;
+        this.damage = damage;
     }
     void FixedUpdate()
     {
@@ -20,6 +23,13 @@ public class ProjectileLogic : MonoBehaviour
         
         time += Time.fixedDeltaTime;
         if (time >= m_lifetime) {
+            Destroy(gameObject);
+        }
+    }
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "Bean" && other.gameObject.GetComponent<HealthComponent>()) {
+            HealthComponent component = other.gameObject.GetComponent<HealthComponent>();
+            component.SetHealth(component.GetHealth() - damage);
             Destroy(gameObject);
         }
     }
