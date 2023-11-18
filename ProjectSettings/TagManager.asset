@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bean
+  - Zombie
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Characters
   - Water
   - UI
   - 

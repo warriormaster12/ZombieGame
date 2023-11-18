@@ -27,7 +27,7 @@ public class ProjectileLogic : MonoBehaviour
         }
     }
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Bean" && other.gameObject.GetComponent<HealthComponent>()) {
+        if (other.tag == "Zombie" && other.gameObject.GetComponent<HealthComponent>()) {
             HealthComponent component = other.gameObject.GetComponent<HealthComponent>();
             component.SetHealth(component.GetHealth() - damage);
             Destroy(gameObject);

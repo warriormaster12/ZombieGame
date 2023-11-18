@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1222075593924764059}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GunAttachment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8607913114283383190}
   - component: {fileID: 6116107284872195064}
   - component: {fileID: 1643565901316665372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 5271768330625696967}
   - component: {fileID: 9087301091976886578}
   - component: {fileID: 6039131228398355481}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,9 +232,9 @@ GameObject:
   - component: {fileID: 6379815801357166057}
   - component: {fileID: 5384446356599184767}
   - component: {fileID: 5274506436542483335}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 8687612469491152684}
   - component: {fileID: 3616640071092436191}
   - component: {fileID: 7046077745730684450}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 661320453327576419}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,9 +446,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1222075593924764059}
     m_Modifications:
+    - target: {fileID: 3212176119126818280, guid: ec18995aa246524b2800a3662b34c9b7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7104022049387078190, guid: ec18995aa246524b2800a3662b34c9b7, type: 3}
       propertyPath: m_Name
       value: TestGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104022049387078190, guid: ec18995aa246524b2800a3662b34c9b7, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7686511533362054851, guid: ec18995aa246524b2800a3662b34c9b7, type: 3}
       propertyPath: m_LocalPosition.x
