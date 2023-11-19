@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> m_spawn_points;
-    [SerializeField] private float m_spawn_interval;
+    [SerializeField] private Vector2 m_spawn_interval = new Vector2(1.0f, 2.5f);
 
     [SerializeField] private int m_max_zombie_count = 10;
 
@@ -22,14 +22,14 @@ public class SpawnManager : MonoBehaviour
         }
 
         timer += Time.fixedDeltaTime;
-        if (timer >= m_spawn_interval) {
-            SpawnPoint spawn_point = m_spawn_points[Random.Range(0, m_spawn_points.Count - 1)].GetComponent<SpawnPoint>();
+        if (timer >= Random.Range(m_spawn_interval.x, m_spawn_interval.y)) {
+            int idx = Random.Range(0, m_spawn_points.Count);
+            SpawnPoint spawn_point = m_spawn_points[idx].GetComponent<SpawnPoint>();
             if (!spawn_point) {
                 Debug.LogError("No SpawnPoint component found");
                 return;
             }
             spawn_point.SpawnZombie();
-            Debug.Log(zombie_count);
             timer = 0f;
         }
     }

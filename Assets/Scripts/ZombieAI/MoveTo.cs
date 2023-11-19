@@ -30,7 +30,7 @@ public class MoveTo : MonoBehaviour
             target = GameObject.FindGameObjectWithTag(m_target_tag);
             return;
         }
-        if (last_position != target.transform.position) {
+        if (last_position != target.transform.position || nav_mesh.destination != target.transform.position) {
             nav_mesh.destination = target.transform.position;
             nav_mesh.speed = m_speed;
             nav_mesh.stoppingDistance = m_acceptable_distance;

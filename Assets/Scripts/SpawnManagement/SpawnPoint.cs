@@ -16,7 +16,7 @@ public class SpawnPoint : MonoBehaviour
     }
 
     public void SpawnZombie() {
-        GameObject zombie = m_zombie_types[Random.Range(0, m_zombie_types.Count - 1)];
+        GameObject zombie = m_zombie_types[Random.Range(0, m_zombie_types.Count)];
         GameObject zombie_inst = Instantiate(zombie);
         zombie_inst.transform.position =  new Vector3(
             Random.Range(spawn_collider.bounds.min.x, spawn_collider.bounds.max.x),

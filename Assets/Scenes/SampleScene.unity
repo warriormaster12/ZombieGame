@@ -1156,6 +1156,10 @@ PrefabInstance:
       propertyPath: m_spread
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5794353945338038292, guid: 796dcc451ebc69bf0a6036b0301fa719, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.334
+      objectReference: {fileID: 0}
     - target: {fileID: 5899700839354768382, guid: 796dcc451ebc69bf0a6036b0301fa719, type: 3}
       propertyPath: m_Name
       value: Teemu
