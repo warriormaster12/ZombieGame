@@ -1314,6 +1314,10 @@ PrefabInstance:
       propertyPath: m_layer_mask.m_Bits
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6759778553866214805, guid: 796dcc451ebc69bf0a6036b0301fa719, type: 3}
+      propertyPath: m_DirtyAABB
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6949433307193407326, guid: 796dcc451ebc69bf0a6036b0301fa719, type: 3}
       propertyPath: weight
       value: 1
