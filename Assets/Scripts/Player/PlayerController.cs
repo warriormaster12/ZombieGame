@@ -16,9 +16,15 @@ public class PlayerController : MonoBehaviour
     
     bool grounded;
     Vector3 velocity;
+    Vector3 direction;
+
     CharacterController controller;
     void Awake() {
         controller = GetComponent<CharacterController>();
+    }
+
+    public Vector3 GetDirection() {
+        return direction;
     }
 
     private void FixedUpdate() {
@@ -40,7 +46,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = -m_gravity * m_mass * Time.fixedDeltaTime;
         }
 
-        Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
         velocity = Vector3.Lerp(velocity, direction * m_speed * Time.fixedDeltaTime, m_acceleration * Time.fixedDeltaTime);
         controller.Move(velocity);
     }
