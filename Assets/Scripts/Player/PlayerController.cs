@@ -19,15 +19,28 @@ public class PlayerController : MonoBehaviour
     Vector3 direction;
 
     CharacterController controller;
+    HealthComponent health;
     void Awake() {
         controller = GetComponent<CharacterController>();
+        health = GetComponent<HealthComponent>();
+        if (health) {
+            health.OnHealthDepleeted.AddListener(OnDeath);
+        } 
     }
 
     public Vector3 GetDirection() {
         return direction;
     }
 
+    private void OnDeath() {
+        m_model_container.gameObject.SetActive(false);
+        controller.enabled = false;
+    } 
+
     private void FixedUpdate() {
+        if (!controller || !controller.enabled) {
+            return;
+        }
         if (m_model_container) {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane p = new Plane( Vector3.up, transform.position );
