@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_target_tag: Player
-  m_speed: 5
+  m_running: 0
+  m_speed: 3
   m_acceptable_distance: 2
 --- !u!114 &1210259170451652426
 MonoBehaviour:
