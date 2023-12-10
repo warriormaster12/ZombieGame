@@ -9,6 +9,11 @@ public class ZombieController : MonoBehaviour
     private Animator animator;
     private NavMeshAgent nav_mesh;
     private MoveTo move_to;
+    private MeleeAttack meleeAttack;
+
+    private ZombieAnimationEvents animation_events;
+
+    private bool is_player_dead = false;
     void Awake()
     {
         health = GetComponent<HealthComponent>();
@@ -17,8 +22,10 @@ public class ZombieController : MonoBehaviour
             health.OnHealthDepleeted.AddListener(OnDeath);
         }
         animator = transform.GetChild(0).GetComponent<Animator>();
+        animation_events = animator.gameObject.GetComponent<ZombieAnimationEvents>();
         nav_mesh = GetComponent<NavMeshAgent>();
         move_to = GetComponent<MoveTo>();
+        meleeAttack = GetComponent<MeleeAttack>();
     }
 
     void Start()
@@ -26,6 +33,10 @@ public class ZombieController : MonoBehaviour
         if (move_to)
         {
             move_to.GetTarget().GetComponent<HealthComponent>().OnHealthDepleeted.AddListener(OnPlayerDeath);
+        }
+        if (animation_events)
+        {
+            animation_events.OnDeathFinished.AddListener(() => { StartCoroutine(OnDeathFinished()); });
         }
     }
 
@@ -43,6 +54,8 @@ public class ZombieController : MonoBehaviour
                 {
                     animator.SetFloat("speed", nav_mesh.velocity.magnitude / move_to.GetSpeed());
                 }
+                animator.SetBool("attacking", move_to.TargetReached() && !is_player_dead);
+
             }
         }
     }
@@ -58,9 +71,16 @@ public class ZombieController : MonoBehaviour
         animator.SetBool("dying", true);
     }
 
+    IEnumerator OnDeathFinished()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        Destroy(gameObject);
+    }
+
     void OnPlayerDeath()
     {
         animator.SetBool("dancing", true);
         nav_mesh.enabled = false;
+        is_player_dead = true;
     }
 }

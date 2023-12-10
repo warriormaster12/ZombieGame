@@ -27,6 +27,15 @@ public class MoveTo : MonoBehaviour
         return target;
     }
 
+    public bool TargetReached()
+    {
+        if (!nav_mesh.enabled)
+        {
+            return false;
+        }
+        return nav_mesh.remainingDistance <= m_acceptable_distance;
+    }
+
     void Awake()
     {
         nav_mesh = GetComponent<NavMeshAgent>();
@@ -51,6 +60,20 @@ public class MoveTo : MonoBehaviour
         else
         {
             last_position = target.transform.position;
+            if (nav_mesh)
+            {
+                nav_mesh.destination = last_position;
+            }
+        }
+    }
+    void Start()
+    {
+        if (nav_mesh)
+        {
+            if (melee_attack)
+            {
+                melee_attack.enabled = nav_mesh.remainingDistance <= m_acceptable_distance;
+            }
         }
     }
     void FixedUpdate()

@@ -134,7 +134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3918333094957626061}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 989a977e8bbd447c0a20eddd8773efcb, type: 3}
   m_Name: 
@@ -142,7 +142,6 @@ MonoBehaviour:
   m_damage: 20
   m_target_tag: Player
   m_ray_length: 15
-  m_attack_interval: 0.25
   m_ray_layer_mask:
     serializedVersion: 2
     m_Bits: 8
@@ -209,10 +208,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fec9d6aa158b19068b013307dccac0eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 378414376854216127}
   m_SourcePrefab: {fileID: 100100000, guid: fec9d6aa158b19068b013307dccac0eb, type: 3}
 --- !u!4 &4879945117608965476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fec9d6aa158b19068b013307dccac0eb, type: 3}
   m_PrefabInstance: {fileID: 4914470938239996559}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5256506252448215006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fec9d6aa158b19068b013307dccac0eb, type: 3}
+  m_PrefabInstance: {fileID: 4914470938239996559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &378414376854216127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256506252448215006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b6bde5d41dc819b9808fe957bf41a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDeathFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndAttack:
+    m_PersistentCalls:
+      m_Calls: []
