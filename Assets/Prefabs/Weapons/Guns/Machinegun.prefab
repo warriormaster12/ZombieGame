@@ -82,7 +82,7 @@ MonoBehaviour:
   m_fire_rate: 0.25
   m_max_spread_angle: 5
   m_max_projectiles: 1
-  m_damage: 35
+  m_damage: 20
 --- !u!1001 &3020392985130778912
 PrefabInstance:
   m_ObjectHideFlags: 0

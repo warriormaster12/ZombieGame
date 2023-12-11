@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -12,40 +13,61 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_acceleration = 10f;
 
     [SerializeField] private Transform m_model_container;
-    
-    
+
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI m_health_text;
+
+
     bool grounded;
     Vector3 velocity;
     Vector3 direction;
 
     CharacterController controller;
     HealthComponent health;
-    void Awake() {
+
+    WeaponFiring firing_weapon;
+
+
+    void Awake()
+    {
         controller = GetComponent<CharacterController>();
         health = GetComponent<HealthComponent>();
-        if (health) {
+        firing_weapon = GetComponent<WeaponFiring>();
+        if (health)
+        {
             health.OnHealthDepleeted.AddListener(OnDeath);
-        } 
+        }
     }
 
-    public Vector3 GetDirection() {
+    public Vector3 GetDirection()
+    {
         return direction;
     }
 
-    private void OnDeath() {
+    private void OnDeath()
+    {
         m_model_container.gameObject.SetActive(false);
         controller.enabled = false;
-    } 
+        firing_weapon.enabled = false;
+    }
 
-    private void FixedUpdate() {
-        if (!controller || !controller.enabled) {
+    private void FixedUpdate()
+    {
+        if (health && m_health_text)
+        {
+            m_health_text.text = "Health: " + health.GetHealth();
+        }
+        if (!controller || !controller.enabled)
+        {
             return;
         }
-        if (m_model_container) {
+        if (m_model_container)
+        {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Plane p = new Plane( Vector3.up, transform.position );
-            if( p.Raycast( mouseRay, out float hitDist) ){
-                Vector3 hitPoint = mouseRay.GetPoint( hitDist );
+            Plane p = new Plane(Vector3.up, transform.position);
+            if (p.Raycast(mouseRay, out float hitDist))
+            {
+                Vector3 hitPoint = mouseRay.GetPoint(hitDist);
                 m_model_container.LookAt(hitPoint);
                 m_model_container.rotation = Quaternion.Euler(new Vector3(0, m_model_container.rotation.eulerAngles.y, 0));
             }
@@ -55,7 +77,9 @@ public class PlayerController : MonoBehaviour
         if (grounded && velocity.y < 0)
         {
             velocity.y = 0f;
-        } else {
+        }
+        else
+        {
             velocity.y = -m_gravity * m_mass * Time.fixedDeltaTime;
         }
 
@@ -63,5 +87,5 @@ public class PlayerController : MonoBehaviour
         velocity = Vector3.Lerp(velocity, direction * m_speed * Time.fixedDeltaTime, m_acceleration * Time.fixedDeltaTime);
         controller.Move(velocity);
     }
-    
+
 }

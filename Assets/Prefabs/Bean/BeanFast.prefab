@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4348535801376946085}
   - component: {fileID: 1210259170451652426}
   m_Layer: 6
-  m_Name: Bean
+  m_Name: BeanFast
   m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81aefe6354054826e950094ff94afc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 100
+  m_health: 70
   OnHealthDepleeted:
     m_PersistentCalls:
       m_Calls: []
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_target_tag: Player
-  m_running: 0
-  m_speed: 3
+  m_running: 1
+  m_speed: 8
   m_acceptable_distance: 2
 --- !u!114 &1210259170451652426
 MonoBehaviour:
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989a977e8bbd447c0a20eddd8773efcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_damage: 20
+  m_damage: 30
   m_target_tag: Player
   m_ray_length: 15
   m_ray_layer_mask:
@@ -264,7 +264,7 @@ PrefabInstance:
     - target: {fileID: -2049929814205202405, guid: fec9d6aa158b19068b013307dccac0eb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 35ea21e3016332b98bce8239186f4c01, type: 2}
+      objectReference: {fileID: 2100000, guid: cc90746dd1cded6a8882de4602eaaa69, type: 2}
     - target: {fileID: -1946453301020861864, guid: fec9d6aa158b19068b013307dccac0eb, type: 3}
       propertyPath: m_Layer
       value: 0
